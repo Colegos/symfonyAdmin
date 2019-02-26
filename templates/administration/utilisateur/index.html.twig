@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="row">
+            <h1>{{ title }}</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Pseudo</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Adresse Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Date d'inscription</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                {% for val in utilisateur %}
+                    <tr>
+                        <td>{{ val.id }}</td>
+                        <td>{{ val.pseudo }}</td>
+                        <td>{{ val.nom }}</td>
+                        <td>{{ val.prenom }}</td>
+                        <td>{{ val.mail }}</td>
+                        <td>{{ val.roleid }}</td>
+                        <td>{{ val.dateinscription | date("m/d/Y") }}</td>
+                        <td class="text-right">
+                            <a href="/administration/utilisateur/modifier/{{ val.id }}" class="btn btn-secondary">Modifier</a>
+                            <a href="" class="ml-2 btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row">
+            <a href="/administration/utilisateur/ajouter" class="btn btn-primary">Ajouter un utilisateur</a>
+        </div>
+    </div>
+{% endblock %}

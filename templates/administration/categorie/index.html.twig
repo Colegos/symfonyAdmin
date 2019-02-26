@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories!{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="row">
+            <h1>{{ title }}</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th></th>
+                </tr>
+                </thead>
+                {% for val in categorie %}
+                    <tr>
+                        <td>{{ val.id }}</td>
+                        <td>{{ val.nom }}</td>
+                        <td class="text-right">
+                            <a href="/produit/modifier/{{ val.id }}" class="btn btn-secondary">Modifier</a>
+                            <a href="" class="ml-2 btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="row">
+            <h1>Creer une nouvelle categorie</h1>
+        </div>
+        <div class="row">
+            <div>
+                {{ form_start(form) }}
+                {{ form_row(form.nom) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
